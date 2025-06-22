@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>敬峰的保肌減脂作戰總部 v2.0</title>
+    
+    <!-- CSS and Icon Libraries -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <!-- =============== PWA 核心標籤 =============== -->
+    <!-- 1. 連結到 App 設定檔 -->
+    <link rel="manifest" href="manifest.json">
+    <!-- 2. 設定 App 的主題顏色 (影響瀏覽器和狀態列) -->
+    <meta name="theme-color" content="#1e3a8a">
+    <!-- ============================================= -->
+
+    <style>
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background-color: #f1f5f9; /* slate-100 */
+            color: #334155; /* slate-700 */
+        }
+        .container {
+            max-width: 900px;
+            margin: auto;
+        }
+        .card {
+            background-color: white;
+            border-radius: 16px;
+            padding: 24px 32px;
+            margin-bottom: 24px;
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.07), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            border: 1px solid #e2e8f0;
+        }
+        .header {
+            background: linear-gradient(135deg, #1e3a8a, #2563eb);
+            color: white;
+            padding: 40px;
+            border-radius: 16px;
+            text-align: center;
+        }
+        .day-card {
+            border-left: 5px solid #2563eb;
+        }
+        .workout-day {
+            border-left: 5px solid #f97316;
+            background-color: #fff7ed;
+        }
+        h1, h2, h3 {
+            font-weight: 700;
+        }
+        h1 { font-size: 2.25rem; font-weight: 900; }
+        h2 { 
+            font-size: 1.5rem; 
+            color: #1e3a8a; /* blue-900 */
+            padding-bottom: 12px; 
+            margin-bottom: 20px;
+            border-bottom: 2px solid #eef2ff; /* indigo-100 */
+        }
+        h3 { 
+            font-size: 1.125rem; 
+            margin-top: 1.5rem; 
+            margin-bottom: 0.75rem; 
+            color: #1f2937; /* slate-800 */
+        }
+        .task-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 8px;
+            transition: background-color 0.2s;
+            border-radius: 8px;
+        }
+        .task-item:hover {
+            background-color: #f8fafc; /* slate-50 */
+        }
+        input[type="checkbox"] {
+            width: 22px;
+            height: 22px;
+            margin-right: 16px;
+            cursor: pointer;
+            accent-color: #2563eb;
+            flex-shrink: 0;
+        }
+        label {
+            cursor: pointer;
+            flex-grow: 1;
+            transition: color 0.2s;
+        }
+        input[type="checkbox"]:checked + label {
+            text-decoration: line-through;
+            color: #94a3b8; /* slate-400 */
+        }
+        .icon { margin-right: 12px; }
+        .strategy-card { background-color: #eef2ff; border: 1px solid #c7d2fe; }
+        .mission-card { background-color: #fffbeb; border: 1px solid #fcd34d; }
+        .note { font-size: 0.875rem; color: #64748b; margin-top: 4px; padding-left: 38px;}
+    </style>
+</head>
+<body class="p-4 md:p-8">
+
+    <div class="container">
+
+        <header class="header mb-8">
+            <h1>敬峰的作戰總部 v2.0</h1>
+            <p class="text-lg opacity-90 mt-2">目標：高效應對高強度工作週，同時擊破內臟脂肪、全力保衛肌肉</p>
+        </header>
+        
+        <div class="card strategy-card">
+            <h2 class="text-blue-900 flex items-center"><i class="ph-bold ph-strategy icon text-blue-700"></i>三大作戰方針 (本週核心)</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div>
+                    <h3 class="mt-0 flex items-center"><i class="ph-fill ph-fork-knife icon"></i>飲食策略</h3>
+                    <p class="text-sm text-slate-600">戒除精緻糖與澱粉，增加水溶性纖維，並確保每餐都有優質蛋白質。</p>
+                </div>
+                <div>
+                    <h3 class="mt-0 flex items-center"><i class="ph-fill ph-barbell icon"></i>運動策略</h3>
+                    <p class="text-sm text-slate-600">透過 HIIT 高效燃脂，並以肌力訓練提升基礎代謝，鞏固肌肉引擎。</p>
+                </div>
+                <div>
+                    <h3 class="mt-0 flex items-center"><i class="ph-fill ph-bed icon"></i>生活策略</h3>
+                    <p class="text-sm text-slate-600">維持7-8小時優質睡眠，管理壓力，穩定荷爾蒙，避免脂肪囤積。</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card mission-card">
+            <h2 class="text-amber-900 flex items-center"><i class="ph-bold ph-rocket-launch icon text-amber-600"></i>本週關鍵任務 (To-Do)</h2>
+            <div class="task-item">
+                <input type="checkbox" id="task-whey">
+                <label for="task-whey" class="font-bold text-amber-800">後勤升級：購入「分離式乳清蛋白」，為週六的肌力日做好萬全準備！</label>
+            </div>
+        </div>
+        
+        <!-- Monday -->
+        <div class="card day-card">
+            <h2 class="flex items-center"><i class="ph-bold ph-calendar-blank icon"></i>週一：高效專注日 (AI課程日)</h2>
+            <p class="note">今天是高強度腦力激盪日，餐點力求簡單、穩定血糖，避免飯後昏沉。</p>
+            <div>
+                <h3><i class="ph-fill ph-sun icon"></i>早餐</h3>
+                <div class="task-item"><input type="checkbox" id="m-b1"><label for="m-b1">確保蛋白質：無糖豆漿 + 茶葉蛋x2</label></div>
+            </div>
+            <div>
+                <h3><i class="ph-fill ph-bowl-food icon"></i>午餐 (自助餐)</h3>
+                <div class="task-item"><input type="checkbox" id="m-l1"><label for="m-l1">執行飲食策略：2-3樣炒青菜 + 1份清蒸魚/滷雞腿，不吃飯。</label></div>
+            </div>
+            <div>
+                <h3><i class="ph-fill ph-moon icon"></i>晚餐</h3>
+                <div class="task-item"><input type="checkbox" id="m-d1"><label for="m-d1">便利商店組合：即食雞胸肉 + 生菜沙拉 + 無糖豆漿。</label></div>
+            </div>
+        </div>
+        
+        <!-- Tuesday -->
+        <div class="card workout-day">
+            <h2 class="text-orange-800 flex items-center"><i class="ph-bold ph-person-simple-run icon"></i>週二：移動教學日 (台中教課 + 有氧訓練)</h2>
+            <p class="note">今天是移動日，餐點要方便攜帶或易於尋找。運動前晚餐需輕量化。</p>
+             <div>
+                <h3><i class="ph-fill ph-sun icon"></i>早餐</h3>
+                <div class="task-item"><input type="checkbox" id="tu-b1"><label for="tu-b1">確保蛋白質：無糖豆漿 + 茶葉蛋x2</label></div>
+            </div>
+            <div>
+                <h3><i class="ph-fill ph-bowl-food icon"></i>午餐 (高鐵便當/便利商店)</h3>
+                 <div class="task-item"><input type="checkbox" id="tu-l1"><label for="tu-l1">高鐵站尋找健康餐盒，或執行便利商店的「雞胸肉+沙拉」組合。</label></div>
+            </div>
+            <div>
+                <h3><i class="ph-fill ph-moon icon"></i>晚餐 (運動前1.5-2小時)</h3>
+                <div class="task-item"><input type="checkbox" id="tu-d1"><label for="tu-d1">輕量好消化：單點一碗蛤蜊湯+燙青菜，或一份雞胸肉沙拉。</label></div>
+            </div>
+             <div>
+                <h3><i class="ph-fill ph-first-aid-kit icon"></i>運動後</h3>
+                <div class="task-item"><input type="checkbox" id="tu-p1"><label for="tu-p1">恢復補給：一瓶無糖豆漿 或 一顆蘋果/香蕉。</label></div>
+            </div>
+        </div>
+
+        <!-- Wednesday -->
+        <div class="card day-card">
+            <h2 class="flex items-center"><i class="ph-bold ph-brain icon"></i>週三：超級腦力日 (全天AI課程)</h2>
+            <p class="note">今天是本週最長的教學日，心力消耗巨大。餐點必須極度簡單，避免任何需要額外思考的選擇。</p>
+             <div>
+                <h3><i class="ph-fill ph-sun icon"></i>早餐</h3>
+                <div class="task-item"><input type="checkbox" id="w-b1"><label for="w-b1">標準配備：無糖豆漿 + 茶葉蛋x2。</label></div>
+            </div>
+            <div>
+                <h3><i class="ph-fill ph-bowl-food icon"></i>午餐</h3>
+                 <div class="task-item"><input type="checkbox" id="w-l1"><label for="w-l1">重複最簡單有效的組合：便利商店的「雞胸肉+沙拉+無糖豆漿」。</label></div>
+            </div>
+            <div>
+                <h3><i class="ph-fill ph-moon icon"></i>晚餐</h3>
+                <div class="task-item"><input type="checkbox" id="w-d1"><label for="w-d1">下課後犒賞自己：去滷味攤夾大量蔬菜、豆腐、豆乾和蛋。</label></div>
+            </div>
+        </div>
+        
+        <!-- Thursday -->
+        <div class="card day-card">
+            <h2 class="flex items-center"><i class="ph-bold ph-presentation-chart icon"></i>週四：商務展覽日 (逛展+會議)</h2>
+            <p class="note">今天會大量步行，熱量消耗增加，但也要注意展場食物多為地雷。需多補充水份。</p>
+            <div>
+                <h3><i class="ph-fill ph-sun icon"></i>早餐</h3>
+                <div class="task-item"><input type="checkbox" id="th-b1"><label for="th-b1">標準配備：無糖豆漿 + 茶葉蛋x2。</label></div>
+            </div>
+            <div>
+                <h3><i class="ph-fill ph-bowl-food icon"></i>午餐</h3>
+                 <div class="task-item"><input type="checkbox" id="th-l1"><label for="th-l1">在展場附近尋找「日式定食」，點烤魚套餐，飯減半或不要。</label></div>
+            </div>
+            <div>
+                <h3><i class="ph-fill ph-moon icon"></i>晚餐</h3>
+                <div class="task-item"><input type="checkbox" id="th-d1"><label for="th-d1">會議後簡單吃：找一家自助餐，只夾青菜和蛋白質，或吃一頓健康的汕頭火鍋。</label></div>
+            </div>
+        </div>
+
+        <!-- Friday -->
+        <div class="card day-card">
+            <h2 class="flex items-center"><i class="ph-bold ph-popcorn icon"></i>週五：移動放鬆日 (基隆教課+電影)</h2>
+            <p class="note">下午移動教學，晚上是放鬆時刻，但電影院是高熱量零食的陷阱區，需要策略應對。</p>
+            <div>
+                <h3><i class="ph-fill ph-sun icon"></i>早餐/午餐</h3>
+                <div class="task-item"><input type="checkbox" id="f-b1"><label for="f-b1">出發前將早、午餐解決，可參考週一或週三的簡單有效組合。</label></div>
+            </div>
+            <div>
+                <h3><i class="ph-fill ph-moon icon"></i>晚餐</h3>
+                 <div class="task-item"><input type="checkbox" id="f-d1"><label for="f-d1">在基隆尋找廟口小吃外的健康選擇，如海產店的清蒸魚+燙青菜。</label></div>
+            </div>
+            <div>
+                <h3><i class="ph-fill ph-ticket icon"></i>電影之夜攻略</h3>
+                <div class="task-item"><input type="checkbox" id="f-p1"><label for="f-p1">飲品：自己帶一瓶無糖茶或水進場。</label></div>
+                <div class="task-item"><input type="checkbox" id="f-p2"><label for="f-p2">零食：如果真的想吃，選擇一小份「原味」爆米花，或自己帶一小包無調味堅果。</label></div>
+            </div>
+        </div>
+        
+        <!-- Saturday -->
+        <div class="card workout-day">
+            <h2 class="text-orange-800 flex items-center"><i class="ph-bold ph-barbell icon"></i>週六：超級戰鬥日 (桃園教學+逛展+肌力訓練)</h2>
+            <p class="note">本日行程最滿，對體力是最大考驗。餐點的「時間點」和「運動後補給」是成敗關鍵。</p>
+            <div>
+                 <h3><i class="ph-fill ph-sun icon"></i>早餐</h3>
+                <div class="task-item"><input type="checkbox" id="sa-b1"><label for="sa-b1">確保蛋白質：無糖豆漿 + 茶葉蛋x2</label></div>
+                <div class="task-item"><input type="checkbox" id="sa-b2"><label for="sa-b2">運動能量：額外補充一根香蕉</label></div>
+            </div>
+            <div>
+                <h3><i class="ph-fill ph-bowl-food icon"></i>午餐</h3>
+                 <div class="task-item"><input type="checkbox" id="sa-l1"><label for="sa-l1">方便為主：在桃園或展場附近，執行便利商店組合拳。</label></div>
+            </div>
+            <div>
+                <h3><i class="ph-fill ph-moon icon"></i>晚餐 (運動前1.5-2小時)</h3>
+                <div class="task-item"><input type="checkbox" id="sa-d1"><label for="sa-d1">優質碳水：一顆中型地瓜或一個鮪魚御飯糰。</label></div>
+                <div class="task-item"><input type="checkbox" id="sa-d2"><label for="sa-d2">優質蛋白：一份即食雞胸肉。</label></div>
+            </div>
+             <div>
+                <h3><i class="ph-fill ph-lightning icon text-red-500"></i>運動後黃金30分鐘內</h3>
+                <div class="task-item">
+                    <input type="checkbox" id="sa-p1" style="accent-color: #ef4444;">
+                    <label for="sa-p1" class="font-bold text-red-600">執行「保肌」最高指令：立即補充一份乳清蛋白！</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sunday -->
+        <div class="card day-card">
+            <h2 class="flex items-center"><i class="ph-bold ph-calendar-check icon"></i>週日：休息與規劃日</h2>
+            <div>
+                <h3><i class="ph-fill ph-fork-knife icon"></i>餐食規劃</h3>
+                <div class="task-item"><input type="checkbox" id="su-m1"><label for="su-m1">自由選擇本週最喜歡的健康餐組合，犒賞自己。</label></div>
+            </div>
+            <div>
+                <h3><i class="ph-fill ph-chart-line-up icon"></i>心態與計畫</h3>
+                <div class="task-item"><input type="checkbox" id="su-p1"><label for="su-p1">檢視本週待辦完成度，感受身體的變化。</label></div>
+                <div class="task-item"><input type="checkbox" id="su-p2"><label for="su-p2">享受悠閒時光，並簡單規劃下週行程。</label></div>
+            </div>
+        </div>
+        
+        <footer class="text-center text-slate-500 py-6">
+            <p>由您的健康管理大師與運動管家共同策劃</p>
+            <p>勝利的關鍵在於堅持。加油，敬峰！</p>
+        </footer>
+
+    </div>
+
+    <!-- =============== JAVASCRIPT 程式碼開始 =============== -->
+    
+    <!-- Script 1: 儲存勾選狀態到瀏覽器 (localStorage) -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            const storageKey = 'jingfengPlanV2State';
+
+            // 載入頁面時，讀取已儲存的狀態
+            function loadState() {
+                const savedState = JSON.parse(localStorage.getItem(storageKey)) || {};
+                checkboxes.forEach(cb => {
+                    if (savedState[cb.id]) {
+                        cb.checked = true;
+                    }
+                });
+            }
+
+            // 勾選時，儲存目前的狀態
+            function saveState() {
+                const currentState = {};
+                checkboxes.forEach(cb => {
+                    if (cb.checked) {
+                        currentState[cb.id] = true;
+                    }
+                });
+                localStorage.setItem(storageKey, JSON.stringify(currentState));
+            }
+
+            // 為每一個 checkbox 加上監聽事件
+            checkboxes.forEach(cb => {
+                cb.addEventListener('change', saveState);
+            });
+
+            // 初始載入狀態
+            loadState();
+        });
+    </script>
+    
+    <!-- Script 2: 註冊 Service Worker 以啟用 PWA 離線功能 -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('./sw.js') // 注意路徑是 ./sw.js
+            .then(registration => {
+              console.log('ServiceWorker 註冊成功，範圍: ', registration.scope);
+            })
+            .catch(err => {
+              console.log('ServiceWorker 註冊失敗: ', err);
+            });
+        });
+      }
+    </script>
+
+    <!-- =============== JAVASCRIPT 程式碼結束 =============== -->
+
+</body>
+</html>
